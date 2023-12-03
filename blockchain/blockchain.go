@@ -8,14 +8,14 @@ import (
 
 const (
 	MINING_DIFFICULTY = 3
-	MINING_SENDER = "THE BLOCKCHAIN"
-	MINING_REWARD = 1.0
+	MINING_SENDER     = "THE BLOCKCHAIN"
+	MINING_REWARD     = 1.0
 )
 
 type Blockchain struct {
-	transactionPool    []*Transaction
-	chain              []*Block
-	blockchainAddress  string
+	transactionPool   []*Transaction
+	chain             []*Block
+	blockchainAddress string
 }
 
 func NewBlockchain(blockchainAddress string) *Blockchain {
@@ -34,7 +34,7 @@ func (bc *Blockchain) CreateBlock(nonce int, previousHash [32]byte) *Block {
 }
 
 func (bc *Blockchain) LastBlock() *Block {
-	return bc.chain[len(bc.chain) - 1]
+	return bc.chain[len(bc.chain)-1]
 }
 
 func (bc *Blockchain) Print() {
@@ -42,7 +42,7 @@ func (bc *Blockchain) Print() {
 		fmt.Printf("%s Chain %d %s \n", strings.Repeat("=", 25), i, strings.Repeat("=", 25))
 		block.Print()
 	}
-	fmt.Printf("%s\n", strings.Repeat("*",50))
+	fmt.Printf("%s\n", strings.Repeat("*", 50))
 }
 
 func (bc *Blockchain) AddTransaction(sender string, recipient string, value float32) {
@@ -96,6 +96,6 @@ func (bc *Blockchain) CalculateTotalAmount(blockchainAddress string) float32 {
 				totalAmount += value
 			}
 		}
-	} 
+	}
 	return totalAmount
 }

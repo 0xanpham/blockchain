@@ -7,12 +7,12 @@ import (
 )
 
 type Transaction struct {
-	senderBlockchainAddress string
+	senderBlockchainAddress    string
 	recipientBlockchainAddress string
-	value float32
+	value                      float32
 }
 
-func NewTransaction(sender string, recipient string, value float32) *Transaction{
+func NewTransaction(sender string, recipient string, value float32) *Transaction {
 	return &Transaction{sender, recipient, value}
 }
 
@@ -24,13 +24,13 @@ func (t *Transaction) Print() {
 }
 
 func (t *Transaction) MarshalJSON() ([]byte, error) {
-	return json.Marshal(struct{
-		Sender      string  `json:"sender_blockchain_address"`
-		Recipient   string  `json:"recipient_blockchain_address"`
-		Value       float32 `json:"value"`
+	return json.Marshal(struct {
+		Sender    string  `json:"sender_blockchain_address"`
+		Recipient string  `json:"recipient_blockchain_address"`
+		Value     float32 `json:"value"`
 	}{
-		Sender:     t.senderBlockchainAddress,
-		Recipient:  t.recipientBlockchainAddress,
-		Value:      t.value,
+		Sender:    t.senderBlockchainAddress,
+		Recipient: t.recipientBlockchainAddress,
+		Value:     t.value,
 	})
 }
